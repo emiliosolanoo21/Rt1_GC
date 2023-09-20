@@ -41,6 +41,12 @@ raytracer.scene.append(Sphere(position=(-0.13,1.49,-4.15), radius = 0.075, mater
 raytracer.scene.append(Sphere(position=(0.12,1.51,-4.15), radius = 0.075, material = stone))
 raytracer.scene.append(Sphere(position=(0.35,1.55,-4.15), radius = 0.075, material = stone))
 
+#Ojos
+raytracer.scene.append(Sphere(position=(0.145,2.04,-4.1), radius = 0.05, material = sclera))
+raytracer.scene.append(Sphere(position=(-0.145,2.04,-4.1), radius = 0.05, material = sclera))
+raytracer.scene.append(Sphere(position=(-0.145,1.95,-3.95), radius = 0.025, material = coal))
+raytracer.scene.append(Sphere(position=(0.145,1.95,-3.95), radius = 0.025, material = coal))
+
 #iluminacion minima del ambiente
 raytracer.lights.append(AmbientLight(intensity=0.1))
 raytracer.lights.append(DirectionalLight(direction=(1,-1,-2), intensity=0.95))
