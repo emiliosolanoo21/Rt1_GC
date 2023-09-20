@@ -1,4 +1,5 @@
-import numpy as np
+
+import mathLib as ml
 
 class Intercept(object):
     def __init__(self, distance, point, normal, obj):
@@ -21,9 +22,9 @@ class Sphere(Shape):
         super().__init__(position,material)
         
     def ray_intersect(self, orig, dir):
-        l = np.subtract(self.position, orig)
-        lengthL = np.linalg.norm(l)
-        tca = np.dot(l,dir)
+        l = ml.substractV(self.position, orig)
+        lengthL = ml.magV(l)
+        tca = ml.dotProd(l,dir)
         
         #if radius < d: no hay contacto (False)
         #if radius > d: si hay contacto (True)
@@ -41,9 +42,9 @@ class Sphere(Shape):
             return None
         
         #P = O+D*t0
-        p = np.add(orig,t0*np.array(dir))
-        normal = np.subtract(p,self.position)
-        normal = normal/np.linalg.norm(normal)
+        p = ml.addV(orig,ml.VxE(dir, t0))
+        normal = ml.substractV(p,self.position)
+        normal = ml.normalizeV(normal)
         
         return Intercept(distance = t0,
                          point = p,
